@@ -1,17 +1,73 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      予定を追加
+      Add a schedule
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 4</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <app-explore-container name="Tab 4 page"></app-explore-container>
+<ion-content>
+  <ion-list>
+    <center>
+      <h1 class="contact-title">予定を追加</h1>
+      <br>
+    </center>
+    <div>
+      <center>
+        <div>
+          <ion-input [(ngModel)] = "content" class="textline" type="id" name="id" placeholder="予定"></ion-input>
+          <ion-input [(ngModel)] = "time" class="textline" type="id" name="pass" placeholder="日時"></ion-input>
+          送信方法
+          <ion-list class="ion-padding-horizontal">
+            <ion-radio-group [(ngModel)]="status_user">
+              <ion-item>
+                <ion-label>自分のみ</ion-label>
+                <ion-radio value="main"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>全員へ送信</ion-label>
+                <ion-radio value="host"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          ToDoに追加しますか？
+          <ion-list class="ion-padding-horizontal">
+            <ion-radio-group [(ngModel)]="status_content">
+              <ion-item>
+                <ion-label>一般</ion-label>
+                <ion-radio value="general"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>ToDo</ion-label>
+                <ion-radio value="todo"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+          色
+          <ion-list class="ion-padding-horizontal">
+            <ion-radio-group [(ngModel)]="color">
+              <ion-item>
+                <ion-label>red</ion-label>
+                <ion-radio value="red"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>blue</ion-label>
+                <ion-radio value="blue"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>yellow</ion-label>
+                <ion-radio value="yellow"></ion-radio>
+              </ion-item>
+              <ion-item>
+                <ion-label>green</ion-label>
+                <ion-radio value="green"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+        </div>
+        <br>
+        <ion-button class="btn1" type="button" (click)="mkaccount();">追加</ion-button>
+      </center>
+    </div>
+  </ion-list>
 </ion-content>
