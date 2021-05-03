@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import { AppRoutingModule } from '../app-routing.module';
 
 @Component({
   selector: 'app-signup',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) { }
+
+  user_id: string;
+  user_pass: string;
+  user_pass_again: string;
+  server_id: string;
 
   ngOnInit() {
+  }
+
+  mkaccount(){
+    
   }
 
 }
