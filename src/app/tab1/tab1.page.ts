@@ -16,5 +16,6 @@ export class Tab1Page {
   Massage: string;
 
   sendChatMessage = () => {
+    this.chatMassage = this.Massage;
   }
 }

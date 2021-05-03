@@ -15,14 +15,15 @@
       <div>
         <center>
           <div>
-            <ion-input class="textline" type="id" name="id" placeholder="ID"></ion-input>
+            <ion-input [(ngModel)] ="user_id" class="textline" type="id" name="id" placeholder="ユーザー名"></ion-input>
           </div>
           <br>
           <div>
-            <ion-input class="textline" type="password" name="pass" placeholder="Password" onchange="nextPage()"></ion-input>
+            <ion-input [(ngModel)] ="user_pass" class="textline" type="password" name="pass" placeholder="パスワード"></ion-input>
           </div>
+          <ion-button class="btn2" fill="clear" type="button" (click)="gosignup();">アカウントを持っていない場合</ion-button>
           <br>
-          <ion-button class="btn1" type="button" onClick="nextPage();">login</ion-button>
+          <ion-button class="btn1" type="button" (click)="nextPage();">login</ion-button>
         </center>
 
       </div>
