@@ -5,5 +5,26 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-list>
+    <center>
+      <h1 class="contact-title">サインアップ</h1>
+      <p>時間割（仮）を始めよう！</p>
+    </center>
+    <div>
+      <center>
+        <div>
+          <p>ユーザー名</p>
+          <ion-input [(ngModel)] = "user_id" class="textline" type="id" name="id" placeholder="半角英数記号で2~20文字"></ion-input>
+          <p>パスワード</p>
+          <ion-input [(ngModel)] = "user_pass" class="textline" type="password" name="pass" placeholder="半角英数記号で5~30文字"></ion-input>
+          <p>パスワード(確認)</p>
+          <ion-input [(ngModel)] = "user_pass_aagin" class="textline" type="password" name="pass" placeholder="パスワードをもう一度入力してください"></ion-input>
+          <p>サーバーID</p>
+          <ion-input [(ngModel)] = "server_id" class="textline" type="id" name="pass" placeholder="6桁の数字"></ion-input>
+        </div>
+        <br>
+        <ion-button class="btn1" type="button" (click)="mkaccount();">login</ion-button>
+      </center>
+    </div>
+  </ion-list>
 </ion-content>

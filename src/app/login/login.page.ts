@@ -18,6 +18,10 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
+  Login(){
+    
+  }
+
   gosignup = () => {
     this.router.navigate(['signup'])
   }
