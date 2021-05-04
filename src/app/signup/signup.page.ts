@@ -13,7 +13,7 @@ export class SignupPage implements OnInit {
   constructor(
     public gs: GlobalService,
     private router: Router,
-  ) { }
+  ) {}
 
   user_id: string;
   pass: string;
@@ -28,8 +28,12 @@ export class SignupPage implements OnInit {
   }
 
   send_localstorage = () => {
-    localStorage.send_id = this.server_id;
-    console.log(localStorage.send_id);
+    localStorage.send_server_id = this.server_id;
+    console.log(localStorage.send_server_id);
+
+    localStorage.send_user_id = this.user_id;
+    console.log(localStorage.send_user_id);
+
   }
 
   signup = () => {

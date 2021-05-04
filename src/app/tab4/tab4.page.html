@@ -17,35 +17,35 @@
         <div>
           <ion-item class="ion-padding-horizontal">
             <ion-label>予定：</ion-label>
-            <ion-input [(ngModel)] = "content" class="textline" type="id" name="content" placeholder="予定の内容"></ion-input>
+            <ion-input [(ngModel)] = "schedule" class="textline" type="id" name="content" placeholder="予定の内容"></ion-input>
           </ion-item>
           <ion-item class="ion-padding-horizontal">
             <ion-label placeholder="月　日付">日付</ion-label>
-            <ion-datetime displayFormat="MM月 DD日" [(ngModel)]="DayDate"></ion-datetime>
+            <ion-datetime displayFormat="MM月 DD日" [(ngModel)]="date"></ion-datetime>
           </ion-item>
           送信方法
           <ion-list class="ion-padding-horizontal">
             <ion-radio-group [(ngModel)]="status_user">
               <ion-item>
                 <ion-label>自分のみ</ion-label>
-                <ion-radio value="main"></ion-radio>
+                <ion-radio value="0"></ion-radio>
               </ion-item>
               <ion-item>
                 <ion-label>全員へ送信</ion-label>
-                <ion-radio value="host"></ion-radio>
+                <ion-radio value="1"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
           ToDoに追加しますか？
           <ion-list class="ion-padding-horizontal">
-            <ion-radio-group [(ngModel)]="status_content">
+            <ion-radio-group [(ngModel)]="element">
               <ion-item>
                 <ion-label>一般</ion-label>
-                <ion-radio value="general"></ion-radio>
+                <ion-radio value="0"></ion-radio>
               </ion-item>
               <ion-item>
                 <ion-label>ToDo</ion-label>
-                <ion-radio value="todo"></ion-radio>
+                <ion-radio value="1"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
@@ -71,6 +71,8 @@
             </ion-radio-group>
           </ion-list>
         </div>
+        <br>
+        {{reply}}
         <br>
         <ion-button class="btn1" type="button" (click)="senddate();">追加</ion-button>
       </center>
