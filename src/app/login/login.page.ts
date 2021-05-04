@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private router: Router,
+  ) {}
+
+  user_id: string;
+  user_pass: string;
 
   ngOnInit() {
+  }
+
+  Login(){
+    
+  }
+
+  gosignup = () => {
+    this.router.navigate(['signup'])
   }
 
 }
