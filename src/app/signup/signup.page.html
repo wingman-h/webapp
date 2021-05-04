@@ -14,16 +14,16 @@
       <center>
         <div>
           ユーザー名
-          <ion-input [(ngModel)] = "user_id" class="textline" type="id" name="id" placeholder="半角英数記号で2~20文字"></ion-input>
+          <ion-input [(ngModel)] = "user_id" class="textline" type="id" name="user_id" placeholder="半角英数記号で2~20文字"></ion-input>
           パスワード
-          <ion-input [(ngModel)] = "user_pass" class="textline" type="password" name="pass" placeholder="半角英数記号で5~30文字"></ion-input>
+          <ion-input [(ngModel)] = "user_pass" class="textline" type="password" name="user_pass" placeholder="半角英数記号で5~30文字"></ion-input>
           パスワード(確認)
-          <ion-input [(ngModel)] = "user_pass_aagin" class="textline" type="password" name="pass" placeholder="パスワードをもう一度入力してください"></ion-input>
+          <ion-input [(ngModel)] = "user_pass_again" class="textline" type="password" name="user_pass_again" placeholder="パスワードをもう一度入力してください"></ion-input>
           サーバーID
-          <ion-input [(ngModel)] = "server_id" class="textline" type="id" name="id" placeholder="6桁の数字"></ion-input>
+          <ion-input [(ngModel)] = "server_id" class="textline" type="id" name="server_id" placeholder="6桁の数字"></ion-input>
         </div>
         <br>
-        <ion-button class="btn1" type="button" (click)="mkaccount();">login</ion-button>
+        <ion-button class="btn1" type="button" (click)="mkaccount();" (click)="send_localstorage()">login</ion-button>
       </center>
     </div>
   </ion-list>

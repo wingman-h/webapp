@@ -15,8 +15,14 @@
     <div>
       <center>
         <div>
-          <ion-input [(ngModel)] = "content" class="textline" type="id" name="id" placeholder="予定"></ion-input>
-          <ion-input [(ngModel)] = "time" class="textline" type="id" name="pass" placeholder="日時"></ion-input>
+          <ion-item class="ion-padding-horizontal">
+            <ion-label>予定：</ion-label>
+            <ion-input [(ngModel)] = "content" class="textline" type="id" name="content" placeholder="予定の内容"></ion-input>
+          </ion-item>
+          <ion-item class="ion-padding-horizontal">
+            <ion-label placeholder="月　日付　時間">日時</ion-label>
+            <ion-datetime displayFormat="MM月 DD日 HH:mm" [(ngModel)]="DayDate"></ion-datetime>
+          </ion-item>
           送信方法
           <ion-list class="ion-padding-horizontal">
             <ion-radio-group [(ngModel)]="status_user">
@@ -66,7 +72,7 @@
           </ion-list>
         </div>
         <br>
-        <ion-button class="btn1" type="button" (click)="mkaccount();">追加</ion-button>
+        <ion-button class="btn1" type="button" (click)="senddate();">追加</ion-button>
       </center>
     </div>
   </ion-list>
