@@ -13,7 +13,7 @@ export class Tab2Page implements OnInit {
 
   ngOnInit() {
     this.input();
-    this.for();
+    //this.for();
   }
 
   postObj: any = {};
@@ -28,16 +28,16 @@ export class Tab2Page implements OnInit {
     this.gs.http('http://140.227.58.187/tubasa/schedule_send.php', body).subscribe(
       res => {
         this.Schedule = res;
-        console.log(res);
+        console.log(this.Schedule);
       }
     )
   }
 
-  for = () => {
-    for (let i = 0, j = this.Schedule["count"]; i < j; i++) {
-      this.schedule[i] = this.Schedule["Schedule"]["schedule" + String(i)]["schedule"];
-    }
-  }
+  // for = () => {
+  //   for (let i = 0, j = this.Schedule["count"]; i < j; i++) {
+  //     this.schedule[i] = this.Schedule["Schedule"]["schedule" + String(i)]["schedule"];
+  //   }
+  // }
 
   public form = [
     { val: "" + this.schedule[0], isChecked: false },
