@@ -12,6 +12,9 @@ import { environment } from '../environments/environment';
 import { HttpClientModule } from '@angular/common/http';
 import { NgCalendarModule  } from 'ionic2-calendar';
 
+import { HttpClientModule } from '@angular/common/http';
+import { NgCalendarModule  } from 'ionic2-calendar';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
