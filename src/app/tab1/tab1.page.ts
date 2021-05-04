@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 
 @Component({
@@ -6,16 +6,29 @@ import {Router} from '@angular/router';
   templateUrl: 'tab1.page.html',
   styleUrls: ['tab1.page.scss']
 })
-export class Tab1Page {
+export class Tab1Page implements OnInit{
 
   constructor(
     private router: Router,
   ) {}
 
   chatMessage: string;
+  repeater: string;
   Message: string;
+  interval: any;
 
   sendChatMessage = () => {
-    this.chatMessage = this.Message;
+    this.repeater = this.Message;
   }
+
+  printchat(){
+    this.chatMessage = this.repeater;
+  }
+
+  ngOnInit(){
+    this.interval = setInterval(() => {
+      this.printchat()
+    }, 1000);
+  }
+
 }

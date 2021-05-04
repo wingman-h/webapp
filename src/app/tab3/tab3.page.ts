@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { CalendarComponent } from "ionic2-calendar";
 
 @Component({
@@ -6,34 +6,28 @@ import { CalendarComponent } from "ionic2-calendar";
   templateUrl: 'tab3.page.html',
   styleUrls: ['tab3.page.scss']
 })
-export class Tab3Page implements OnInit {
+export class Tab3Page {
   @ViewChild(CalendarComponent,null) myCalendar:CalendarComponent;
 
-  eventSource: any[] = [{
-    title: 'test_0',
-    startTime: new Date(Date.UTC(2021,5,4)),
-    endTime: new Date(Date.UTC(2021,5,4)),
-    allDay: false
-}];
+  eventSource = [];
   viewTitle;
 
-  ngOnInit() {
-    this.eventSource.push({
-      title: 'test',
-      startTime: new Date(Date.UTC(2021,5,4)),
-      endTime: new Date(Date.UTC(2021,5,4)),
-      allDay: true
-  });
-  //this.myCalendar.loadEvents();
+  ionViewWillEnter() {
+    this.loadEvents();
   }
+
+  day: any = 5-1;
+  day2: any = 5+1;
 
   loadEvents = () => {
     this.eventSource.push({
         title: 'test',
-        startTime: new Date(Date.UTC(2021,5,4)),
-        endTime: new Date(Date.UTC(2021,5,4)),
+        startTime: new Date(Date.UTC(2021,this.day,this.day2, -9, 0, 0)),
+        endTime: new Date(Date.UTC(2021,this.day,this.day2, -9, 0, 0)),
         allDay: true
     });
+    console.log(this.eventSource);
+    // console.log(this.myCalendar);
     this.myCalendar.loadEvents();
   }
 
