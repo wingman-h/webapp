@@ -13,15 +13,18 @@
     <div>
       <center>
         <div>
-          <ion-input [(ngModel)] = "user_id" class="textline" type="id" name="id" placeholder="ユーザー名"></ion-input>
+          <ion-input [(ngModel)] = "user_id" class="textline" type="id" name="user_id" placeholder="ユーザー名"></ion-input>
         </div>
         <br>
         <div>
-          <ion-input [(ngModel)] = "user_pass" class="textline" type="password" name="pass" placeholder="パスワード"></ion-input>
+          <ion-input [(ngModel)] = "pass" class="textline" type="password" name="pass" placeholder="パスワード"></ion-input>
         </div>
         <ion-button class="btn2" fill="clear" type="button" (click)="gosignup();"><u>アカウントを持っていない場合</u></ion-button>
         <br>
-        <ion-button class="btn1" type="button" (click)="Login();">login</ion-button>
+        <div class="er">
+          {{error}}
+        </div>
+        <ion-button class="btn1" type="button" (click)="login();">login</ion-button>
       </center>
     </div>
   </ion-list>

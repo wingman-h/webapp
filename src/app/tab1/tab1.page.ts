@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
+import { GlobalService } from '../global.service';
+
 
 @Component({
   selector: 'app-tab1',
@@ -9,6 +11,7 @@ import {Router} from '@angular/router';
 export class Tab1Page implements OnInit{
 
   constructor(
+    public gs: GlobalService,
     private router: Router,
   ) {}
 
@@ -28,7 +31,7 @@ export class Tab1Page implements OnInit{
   ngOnInit(){
     this.interval = setInterval(() => {
       this.printchat()
-    }, 1000);
+    }, 10000);
   }
 
 }
