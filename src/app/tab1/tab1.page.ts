@@ -12,10 +12,10 @@ export class Tab1Page {
     private router: Router,
   ) {}
 
-  chatMassage: string;
-  Massage: string;
+  chatMessage: string;
+  Message: string;
 
   sendChatMessage = () => {
-    this.chatMassage = this.Massage;
+    this.chatMessage = this.Message;
   }
 }
