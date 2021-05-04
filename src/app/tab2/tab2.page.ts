@@ -12,35 +12,38 @@ export class Tab2Page implements OnInit {
   constructor(public gs: GlobalService,) { }
 
   ngOnInit() {
-    this.input()
+    this.input();
+    this.for();
   }
 
   postObj: any = {};
   Schedule: any = {};
-  i: any;
-  schedule: string[];
+  schedule: string[] = new Array();
+
   input = () => {
+    console.log(this.Schedule["Schedule"]["schedule" + 0]["schedule"]);
     this.postObj['server_id'] = localStorage.send_server_id;
     const body = this.postObj;
 
     this.gs.http('http://140.227.58.187/tubasa/schedule_send.php', body).subscribe(
       res => {
         this.Schedule = res;
+        console.log(res);
       }
     )
   }
 
   for = () => {
-    for(let i=0, j;i>j; i++){
-      this.schedule[i] = this.Schedule["Schedule"]["schedule"+i]["schedule"];
+    for (let i = 0, j = this.Schedule["count"]; i < j; i++) {
+      this.schedule[i] = this.Schedule["Schedule"]["schedule" + String(i)]["schedule"];
     }
   }
 
-  public form =[
-    { val: ""+this.schedule[0], isChecked: false },
-    { val: ""+this.schedule[1], isChecked: false },
-    { val: ""+this.schedule[2], isChecked: false },
-    { val: ""+this.schedule[3], isChecked: false },
-    { val: ""+this.schedule[4], isChecked: false },
+  public form = [
+    { val: "" + this.schedule[0], isChecked: false },
+    { val: "" + this.schedule[1], isChecked: false },
+    { val: "" + this.schedule[2], isChecked: false },
+    { val: "" + this.schedule[3], isChecked: false },
+    { val: "" + this.schedule[4], isChecked: false },
   ];
 }
