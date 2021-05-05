@@ -16,6 +16,7 @@ export class LoginPage implements OnInit {
 
   user_id: string;
   pass: string;
+  server_id: any;
   postObj: any = {};
   returnObj: any = {};
   error: string;
@@ -43,6 +44,11 @@ export class LoginPage implements OnInit {
         }
       }
     )
+  }
+
+  send_localstorage = () => {
+    localStorage.send_server_id = this.server_id;
+    console.log(localStorage.send_server_id);
   }
 
   goinfo = () => {

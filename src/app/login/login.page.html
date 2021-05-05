@@ -19,12 +19,15 @@
         <div>
           <ion-input [(ngModel)] = "pass" class="textline" type="password" name="pass" placeholder="パスワード"></ion-input>
         </div>
+        <div>
+          <ion-input [(ngModel)] = "server_id" class="textline" type="id" name="server_id" placeholder="サーバーID"></ion-input>
+        </div>
         <ion-button class="btn2" fill="clear" type="button" (click)="gosignup();"><u>アカウントを持っていない場合</u></ion-button>
         <br>
         <div class="er">
           {{error}}
         </div>
-        <ion-button class="btn1" type="button" (click)="login();">login</ion-button>
+        <ion-button class="btn1" type="button" (click)="login();" (click)="send_localstorage()">login</ion-button>
       </center>
     </div>
   </ion-list>
