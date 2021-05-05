@@ -19,6 +19,20 @@ export class Tab1Page implements OnInit{
   repeater: string;
   Message: string;
   interval: any;
+  postObj: any = {};
+  
+
+  input = () => {
+    this.postObj['message'] = this.Message;
+    this.postObj['server_id'] = localStorage.send_server_id;
+    this.postObj['user_id'] = localStorage.send_user_id;
+    const body = this.postObj;
+
+    this.gs.http('http://140.227.58.187/tubasa/message_receive.php', body).subscribe(
+    );
+
+    this.sendChatMessage();
+  }
 
   sendChatMessage = () => {
     this.repeater = this.Message;
@@ -31,7 +45,7 @@ export class Tab1Page implements OnInit{
   ngOnInit(){
     this.interval = setInterval(() => {
       this.printchat()
-    }, 10000);
+    }, 1000);
   }
 
 }
