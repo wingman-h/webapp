@@ -1,0 +1,22 @@
+:root{
+  --my-background-color: #c03737;
+}
+
+.monthview-datetable {
+  border: 0 !important;
+
+  td,
+  th {
+    border: 0 !important;
+    border-radius: 10px !important;
+  }
+
+  .monthview-selected {
+    font-weight: bold;
+    background-color: rgb(157, 193, 240) !important;
+  }
+
+  .monthview-current {
+    background :var(--my-background-color) !important;
+  }
+}
