@@ -7,7 +7,9 @@
 </ion-header>
 
 <ion-content>
-  {{chatMessage}}
+  <ion-card *ngFor="let c of commentList">
+    <ion-card-content>{{c.text}}</ion-card-content>
+  </ion-card>
 </ion-content>
 
 <ion-footer>
