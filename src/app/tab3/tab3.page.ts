@@ -1,4 +1,4 @@
-import { Component, ViewChild, ViewEncapsulation,} from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation, } from '@angular/core';
 import { IonDatetime } from '@ionic/angular';
 import { CalendarComponent } from "ionic2-calendar";
 import { MonthViewComponent } from 'ionic2-calendar/monthview';
@@ -11,20 +11,19 @@ import { GlobalService } from '../global.service';
   encapsulation: ViewEncapsulation.None
 })
 
-export class Tab3Page{
-  @ViewChild(CalendarComponent,null) myCalendar:CalendarComponent;
-
-  flag: boolean = true;
+export class Tab3Page {
+  @ViewChild(CalendarComponent, null) myCalendar: CalendarComponent;
 
   eventSource = [];
   viewTitle;
 
   ionViewWillEnter() {
-    this.input();
+    this.loadEvents();
   }
 
   //イベントを取得
   loadEvents = () => {
+    this.input();
     console.log(this.eventSource);
     // console.log(this.myCalendar);
     this.myCalendar.loadEvents();
@@ -45,97 +44,110 @@ export class Tab3Page{
         this.Schedule = res;
         console.log(this.Schedule);
 
-        for (let i = 0,j = this.Schedule["count"]; i < j; i++) {
+        for (let i = 0, j = this.Schedule["count"]; i <= j; i++) {
           let date = new Date();
 
-          this.event = this.Schedule["Schedule"]["schedule0"]["schedule"];
-          date = this.Schedule["Schedule"]["schedule0"]["date"];
+          this.event = this.Schedule["Schedule"]["schedule"+String(i)]["schedule"];
+          date = this.Schedule["Schedule"]["schedule"+String(i)]["date"];
 
           //console.log(this.event);
           console.log(date);
-          
+
           date = new Date(date);
 
           let Year = date.getFullYear();
           let Month = date.getMonth();
           let Day = date.getDate();
-          
+
           console.log(Year);
           console.log(Month);
           console.log(Day);
 
           this.eventSource.push({
             title: this.event,
-            startTime: new Date(Date.UTC(Year,Month,Day+1,-9,0,0)),
-            endTime: new Date(Date.UTC(Year,Month,Day+1,-9,0,0)),
+            startTime: new Date(Date.UTC(Year, Month, Day + 1, -9, 0, 0)),
+            endTime: new Date(Date.UTC(Year, Month, Day + 1, -9, 0, 0)),
             allDay: true
           });
 
           //色の判定 monthview-current 
-          this.color = this.Schedule["Schedule"]["schedule"+String(i)]["schedule"];
-          if(this.color = "赤"){
-            var monthviewcurrentStyle = getComputedStyle(document.getElementById("monthview-current"));
-            var monthviewcurrentVal = monthviewcurrentStyle.getPropertyValue('--my-background-color');
-
-            console.log(monthviewcurrentVal);
+          console.log(this.Schedule["Schedule"]["schedule" + String(i)]["color"]);
+          this.color = this.Schedule["Schedule"]["schedule" + String(i)]["color"];
+          if (this.color == "red") {
+            const boxElement = document.querySelector('.monthview-current');
+            const cssStyle = getComputedStyle(boxElement);
+            document.documentElement.style.setProperty('--my-background-color', 'rgb(255, 0 , 0)');
+            const cssValue = String(cssStyle.getPropertyValue('--my-background-color')).trim();
+            console.log(cssValue);
           };
-          if(this.color = "青"){
-            var monthviewcurrentStyle = getComputedStyle(document.getElementById("monthview-current"));
-            var monthviewcurrentVal = monthviewcurrentStyle.getPropertyValue('--my-background-color-color');
-
-            console.log(monthviewcurrentVal);
+          if (this.color == "blue") {
+            const boxElement = document.querySelector('.monthview-current');
+            const cssStyle = getComputedStyle(boxElement);
+            document.documentElement.style.setProperty('--my-background-color', 'rgb(0, 37, 250)');
+            const cssValue = String(cssStyle.getPropertyValue('--my-background-color')).trim();
+            console.log(cssValue);
           };
-          if(this.color = "黄"){
-            var monthviewcurrentStyle = getComputedStyle(document.getElementById("monthview-current"));
-            var monthviewcurrentVal = monthviewcurrentStyle.getPropertyValue('--my-background-color');
-
-            console.log(monthviewcurrentVal);
+          if (this.color == "yellow") {
+            const boxElement = document.querySelector('.monthview-current');
+            const cssStyle = getComputedStyle(boxElement);
+            document.documentElement.style.setProperty('--my-background-color', 'rgb(255, 251, 1)');
+            const cssValue = String(cssStyle.getPropertyValue('--my-background-color')).trim();
+            console.log(cssValue);
           };
-          if(this.color = "緑"){
-            var monthviewcurrentStyle = getComputedStyle(document.getElementById("monthview-current"));
-            var monthviewcurrentVal = monthviewcurrentStyle.getPropertyValue('--my-background-color');
-
-            console.log(monthviewcurrentVal);
+          if(this.color == "green") {
+            const boxElement = document.querySelector('.monthview-current');
+            const cssStyle = getComputedStyle(boxElement);
+            document.documentElement.style.setProperty('--my-background-color', 'rgb(0, 250, 0)');
+            const cssValue = String(cssStyle.getPropertyValue('--my-background-color')).trim();
+            console.log(cssValue);
           };
-          this.loadEvents();
+
+        //色の判定２
+        // const boxElement = document.querySelector('.monthview-current');
+        // const cssStyle = getComputedStyle(boxElement);
+        // document.documentElement.style.setProperty('--my-background-color', 'rgb(157, 193, 240)');
+
+        //表示
+        // const cssValue = String(cssStyle.getPropertyValue('--my-background-color')).trim();
+        // console.log(cssValue);
         }
       }
     )
-  }
-  
-  
+}
 
-  calendar = {
-    mode: 'month',
-    currentDate: new Date(),
-  };
-  selectedDate = new Date();
 
-  constructor(public gs: GlobalService,) {}
 
-  onViewTitleChanged(title) {
-    this.viewTitle = title;
-  }
+calendar = {
+  mode: 'month',
+  currentDate: new Date(),
+};
+selectedDate = new Date();
 
-  onEventSelected(event) {
-    console.log('Event selected:' + event.startTime + '-' + event.endTime + ',' + event.title);
-  }
+constructor(public gs: GlobalService,) { }
 
-  onTimeSelected(ev) {
-    console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' +
-      (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
-    this.selectedDate = ev.selectedTime;
-  }
+onViewTitleChanged(title) {
+  this.viewTitle = title;
+}
 
-  onCurrentDateChanged(event: Date) {
-    console.log('current date change: ' + event);
-  }
+onEventSelected(event) {
+  console.log('Event selected:' + event.startTime + '-' + event.endTime + ',' + event.title);
+}
 
-  onRangeChanged(ev) {
-    console.log('range changed: startTime: ' + ev.startTime + ', endTime: ' + ev.endTime);
-  }
+onTimeSelected(ev) {
+  console.log('Selected time: ' + ev.selectedTime + ', hasEvents: ' +
+    (ev.events !== undefined && ev.events.length !== 0) + ', disabled: ' + ev.disabled);
+  this.selectedDate = ev.selectedTime;
+}
 
-  today() {
-    this.calendar.currentDate = new Date();
-  }
+onCurrentDateChanged(event: Date) {
+  console.log('current date change: ' + event);
+}
+
+onRangeChanged(ev) {
+  console.log('range changed: startTime: ' + ev.startTime + ', endTime: ' + ev.endTime);
+}
+
+today() {
+  this.calendar.currentDate = new Date();
+}
 }
