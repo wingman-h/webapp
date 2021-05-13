@@ -1,0 +1,26 @@
+//Typescript側の処理が終わってから処理が始まるっぽい？
+
+:root{
+  --my-background-color: #ff0000;
+}
+
+.monthview-datetable {
+  border: 0 !important;
+
+  td,
+  th {
+    border: 0 !important;
+    border-radius: 10px !important;
+  }
+
+  //選んでいるところの色を変更
+  .monthview-selected {
+    font-weight: bold;
+    background-color: rgb(108, 169, 233) !important;
+  }
+
+  //イベントがあるところの色を変更
+  .monthview-primary-with-event {
+    background : purple !important;
+  }
+}
